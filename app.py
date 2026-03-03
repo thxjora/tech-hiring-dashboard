@@ -58,19 +58,33 @@ html, body, [class*="css"] {
     text-transform: uppercase;
 }
 
-/* Sidebar multiselect */
+/* Sidebar multiselect — input box */
 [data-testid="stSidebar"] [data-testid="stMultiSelect"] > div > div {
     background: #161b22 !important;
-    border: 1px solid #21262d !important;
-    border-radius: 8px !important;
-    color: #c9d1d9 !important;
+    border: 1px solid rgba(0,210,255,0.2) !important;
+    border-radius: 10px !important;
+    color: #e6edf3 !important;
+    box-shadow: 0 0 0 0px transparent;
+    transition: border-color 0.2s;
 }
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] > div > div:focus-within {
+    border-color: rgba(0,210,255,0.5) !important;
+    box-shadow: 0 0 8px rgba(0,210,255,0.15) !important;
+}
+/* Company name tags */
 [data-testid="stSidebar"] [data-testid="stMultiSelect"] span[data-baseweb="tag"] {
-    background: rgba(0,210,255,0.12) !important;
-    border: 1px solid rgba(0,210,255,0.25) !important;
-    border-radius: 6px !important;
-    color: #00d2ff !important;
-    font-size: 0.72rem !important;
+    background: linear-gradient(135deg, rgba(0,210,255,0.18) 0%, rgba(123,47,255,0.14) 100%) !important;
+    border: 1px solid rgba(0,210,255,0.35) !important;
+    border-radius: 20px !important;
+    color: #e6edf3 !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    padding: 2px 10px !important;
+    letter-spacing: 0.01em;
+}
+/* Tag close button */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] span[data-baseweb="tag"] svg {
+    fill: rgba(0,210,255,0.6) !important;
 }
 
 /* Sidebar slider */
