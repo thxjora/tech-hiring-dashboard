@@ -477,10 +477,10 @@ def apply_theme(fig, height=420):
         font=dict(family='Inter', color=FONT_COLOR, size=12),
         margin=dict(l=20, r=20, t=40, b=40),
         legend=dict(
-            bgcolor='rgba(22,27,34,0.8)',
-            bordercolor='#21262d',
+            bgcolor='rgba(13,17,23,0.85)',
+            bordercolor='#30363d',
             borderwidth=1,
-            font=dict(size=11),
+            font=dict(size=14, color='#e6edf3'),
         ),
         xaxis=dict(
             gridcolor=GRID_COLOR, linecolor=AXIS_COLOR,
