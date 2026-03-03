@@ -683,7 +683,7 @@ fig4 = px.scatter(
     size_max=32,
 )
 fig4.update_traces(marker=dict(opacity=0.8, line=dict(width=0)))
-# Add OLS trendlines manually using numpy (no statsmodels dependency)
+# Add 最小二乗法 trendlines manually using numpy (no statsmodels dependency)
 for i, company in enumerate(filtered_df['company'].unique()):
     cdf = filtered_df[filtered_df['company'] == company].dropna(
         subset=['revenue_billions_usd', 'employees_end']
@@ -703,9 +703,9 @@ for i, company in enumerate(filtered_df['company'].unique()):
         ))
 fig4 = apply_theme(fig4)
 st.plotly_chart(fig4, use_container_width=True)
-st.markdown('<div class="chart-caption">図4. 売上高と従業員数の関係（バブルサイズ ＝ 採用数、OLS回帰直線付き）</div>', unsafe_allow_html=True)
+st.markdown('<div class="chart-caption">図4. 売上高と従業員数の関係（バブルサイズ ＝ 採用数、最小二乗法回帰直線付き）</div>', unsafe_allow_html=True)
 st.markdown("""
 <p class="insight">
-本散布図は、各テクノロジー企業の売上高（横軸）と従業員数（縦軸）の関係を示したものである。バブルの大きさは採用数を表しており、事業規模と人員規模の相関を視覚的に把握することができる。OLS回帰直線が示すとおり、売上高の増加に伴い従業員数も増加する傾向が全体的に確認されるが、企業ごとに傾きの異なる分布が見られることから、人的資本の活用効率や事業モデルの違いが反映されていると考えられる。バブルサイズの大きい点は積極的な採用期を示しており、成長戦略との連動性を読み取ることも可能である。
+本散布図は、各テクノロジー企業の売上高（横軸）と従業員数（縦軸）の関係を示したものである。バブルの大きさは採用数を表しており、事業規模と人員規模の相関を視覚的に把握することができる。最小二乗法回帰直線が示すとおり、売上高の増加に伴い従業員数も増加する傾向が全体的に確認されるが、企業ごとに傾きの異なる分布が見られることから、人的資本の活用効率や事業モデルの違いが反映されていると考えられる。バブルサイズの大きい点は積極的な採用期を示しており、成長戦略との連動性を読み取ることも可能である。
 </p>
 """, unsafe_allow_html=True)
