@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from scipy import stats
 
 st.set_page_config(
-    page_title='Tech Hiring & Layoffs: Workforce Data (2000–2025)',
+    page_title='Tech Hiring & Layoffs: Workforce Data (2001–2025)',
     layout='wide',
     initial_sidebar_state='expanded',
 )
@@ -460,8 +460,8 @@ with st.sidebar:
     st.markdown("")
     year_range = st.slider(
         '年の範囲',
-        int(df['year'].min()), int(df['year'].max()),
-        (2000, 2025),
+        2001, int(df['year'].max()),
+        (2001, int(df['year'].max())),
     )
     st.markdown(f"""
     <div class="sidebar-status">
