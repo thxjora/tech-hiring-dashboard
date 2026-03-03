@@ -580,7 +580,14 @@ fig2.add_trace(go.Bar(
 fig2.update_layout(
     barmode='relative',
     xaxis_title='年', yaxis_title='人数（人）',
-    legend=dict(orientation='h', y=1.06, x=0),
+    legend=dict(
+        orientation='h',
+        y=1.08, x=0.5, xanchor='center',
+        font=dict(size=14, color='#e6edf3'),
+        bgcolor='rgba(13,17,23,0.85)',
+        bordercolor='#30363d',
+        borderwidth=1,
+    ),
 )
 fig2 = apply_theme(fig2)
 st.plotly_chart(fig2, use_container_width=True)
