@@ -646,7 +646,6 @@ fig4 = px.scatter(
     x='revenue_billions_usd', y='employees_end',
     color='company', size='new_hires',
     hover_data=['year'],
-    trendline='ols',
     color_discrete_sequence=COLOR_SEQ,
     labels={
         'revenue_billions_usd': '売上高（10億USD）',
@@ -657,6 +656,24 @@ fig4 = px.scatter(
     size_max=32,
 )
 fig4.update_traces(marker=dict(opacity=0.8, line=dict(width=0)))
+# Add OLS trendlines manually using numpy (no statsmodels dependency)
+for i, company in enumerate(filtered_df['company'].unique()):
+    cdf = filtered_df[filtered_df['company'] == company].dropna(
+        subset=['revenue_billions_usd', 'employees_end']
+    )
+    if len(cdf) >= 2:
+        x_vals = cdf['revenue_billions_usd'].values
+        y_vals = cdf['employees_end'].values
+        coeffs = np.polyfit(x_vals, y_vals, 1)
+        x_line = np.linspace(x_vals.min(), x_vals.max(), 100)
+        y_line = np.polyval(coeffs, x_line)
+        fig4.add_trace(go.Scatter(
+            x=x_line, y=y_line,
+            mode='lines',
+            name=company,
+            line=dict(color=COLOR_SEQ[i % len(COLOR_SEQ)], width=1.5, dash='dash'),
+            showlegend=False,
+        ))
 fig4 = apply_theme(fig4)
 st.plotly_chart(fig4, use_container_width=True)
 st.markdown('<div class="chart-caption">図4. 売上高と従業員数の関係（バブルサイズ ＝ 採用数、OLS回帰直線付き）</div>', unsafe_allow_html=True)
